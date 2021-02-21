@@ -11,16 +11,10 @@
 // Define variables
 const options = ["Rock", "Paper", "Scissors"];
 var isGameOver = false
-var userChoice = prompt("Do you want to pick Rock, Paper, or Scissors");
+var userChoice
 var computerChoice = "Rock"
 var playerWins = 0;
 var computerWins = 0;
-
-
-
-
-
-
 
 
 // Generate random option
@@ -37,3 +31,26 @@ function randomChoice(){
     computerChoice = options[numOption];
     return computerChoice;
 };
+
+function playerPrompt() {
+    prompt("Please Choose Rock, Paper, Or Scissors");
+}
+
+
+function gameStart() {
+    var gameStart = prompt("Do you Want To Play a Game of Rock, Paper, Scissors?");
+    if(gameStart === "y") {
+        playerPrompt();
+    } else if (gameStart === "n") {
+        isGameOver = true;
+        alert("Game Is Over, Goodbye");
+        return
+    } else {
+        alert("That is not a Valid Repsonse");
+    }
+
+}
+
+while (isGameOver === false) {
+    gameStart();
+}
