@@ -11,8 +11,8 @@
 // Define variables
 const options = ["Rock", "Paper", "Scissors"];
 var isGameOver = false;
-var playerChoice = playerPrompt();
-var computerChoice = "Scissors";
+var playerChoice
+var computerChoice
 var playerWins = 0;
 var computerWins = 0;
 
@@ -36,65 +36,75 @@ function playerPrompt() {
    return prompt("Please Choose Rock, Paper, Or Scissors");
 }
 
-// Game Start and End Conditions
-// function gameStart() {
-//     var gameStart = prompt("Do you Want To Play a Game of Rock, Paper, Scissors?");
-//     if(gameStart === "y") {
-//         playerPrompt();
-//     } else if (gameStart === "n") {
-//         isGameOver = true;
-//         alert("Game Is Over, Goodbye");
-//         return
-//     } else {
-//         alert("That is not a Valid Repsonse");
-//     }
-
-// }
-
-// while (isGameOver === false) {
-//     gameStart();
-// }
-
-switch(playerChoice) {
-    case "Rock":
-        if(computerChoice === "Scissors") {
-            alert("Player Wins!");
-            playerWins++;
-        } else if(computerChoice === "Paper") {
-            alert("Computer Wins");
-            computerWins++;
-            
-        } else {
-            alert("Draw");
-            playerPrompt();
-        } break
-    
-    case "Paper":
-        if(computerChoice === "Scissors") {
-            alert("Computer Wins");
-            computerWins++;
-        } else if(computerChoice === "Rock") {
-            alert("Player Wins!");
-            playerWins++;
-        } else {
-            alert("Draw")
-            playerPrompt();
-        } break;
-    
-    case "Scissors":
-        if(computerChoice === "Rock") {
-            alert("Computer Wins!");
-            computerWins++;
-        } else if(computerChoice === "Paper") {
-            alert("Player Wins!");
-            playerWins++;
-        } else {
-            alert("Draw");
-            playerPrompt();
-        }
-         break;
-    
-    default:
-        alert("Not a Valid Option!");
-        playerPrompt();
+function confirmGameEnd() {
+    if(confirm("Do You Really Want to End the Game")) {
+        alert(`Game Ended! Player: ${playerWins} Computer: ${computerWins}`);
+        isGameOver = true;
+    } 
 }
+
+//test player choice vs computer choice
+function compare() {
+    switch (playerChoice) {
+        case "Rock":
+            if (computerChoice === "Scissors") {
+                alert("Player Wins!");
+                playerWins++;
+            } else if (computerChoice === "Paper") {
+                alert("Computer Wins");
+                computerWins++;
+
+            } else {
+                alert("Draw");
+            } break
+
+        case "Paper":
+            if (computerChoice === "Scissors") {
+                alert("Computer Wins");
+                computerWins++;
+            } else if (computerChoice === "Rock") {
+                alert("Player Wins!");
+                playerWins++;
+            } else {
+                alert("Draw")
+            } break;
+
+        case "Scissors":
+            if (computerChoice === "Rock") {
+                alert("Computer Wins!");
+                computerWins++;
+            } else if (computerChoice === "Paper") {
+                alert("Player Wins!");
+                playerWins++;
+            } else {
+                alert("Draw");
+            }
+            break;
+
+        default:
+            alert("Not a Valid Option!");
+    }
+}
+
+// Game Start and End Conditions
+function gameStart() {
+    var gameStart = prompt("Do you Want To Play a Game of Rock, Paper, Scissors?");
+    computerChoice = randomChoice();
+    alert(`Current Score: Player ${playerWins} Computer ${computerWins}`);
+    if(gameStart === "y") {
+        playerChoice = playerPrompt();
+        compare()
+    } else if (gameStart === "n") {
+        confirmGameEnd();
+        alert("Game Is Over, Goodbye");
+        return
+    } else {
+        alert("That is not a Valid Repsonse");
+    }
+
+}
+
+while (isGameOver === false) {
+    gameStart();
+}
+
