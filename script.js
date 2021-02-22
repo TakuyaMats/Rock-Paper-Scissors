@@ -112,12 +112,12 @@ function compare() {
 // Game Start and End Conditions
 function gameStart() {
     var gameStartStatus = prompt("Do you Want To Play a Game of Rock, Paper, Scissors?");
-    gameConvert();
+    // gameConvert();
     computerChoice = randomChoice();
     alert(`Current Score: Player ${playerWins} Computer ${computerWins}`);
     if(gameStartStatus === "y") {
         playerChoice = playerPrompt();
-        promptConvert();
+        // promptConvert();
         compare();
     } else if (gameStartStatus === "n") {
         confirmGameEnd();
