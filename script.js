@@ -45,6 +45,16 @@ function promptConvert() {
     }
 };
 
+function gameConvert() {
+    if(gameStartStatus === "Yes" || gameStartStatus === "Y") {
+        gameStartStatus = "y";
+        return gameStartStatus;
+    } else if (gameStartStatus === "No" || gameStartStatus === "N") {
+        gameStartStatus = "n";
+        return gameStartStatus;
+    }
+}
+
 function playerPrompt() {
    return prompt("Please Choose Rock, Paper, Or Scissors");
 }
@@ -101,13 +111,15 @@ function compare() {
 
 // Game Start and End Conditions
 function gameStart() {
-    var gameStart = prompt("Do you Want To Play a Game of Rock, Paper, Scissors?");
+    var gameStartStatus = prompt("Do you Want To Play a Game of Rock, Paper, Scissors?");
+    gameConvert();
     computerChoice = randomChoice();
     alert(`Current Score: Player ${playerWins} Computer ${computerWins}`);
-    if(gameStart === "y") {
+    if(gameStartStatus === "y") {
         playerChoice = playerPrompt();
-        compare()
-    } else if (gameStart === "n") {
+        promptConvert();
+        compare();
+    } else if (gameStartStatus === "n") {
         confirmGameEnd();
         alert("Game Is Over, Goodbye");
         return
