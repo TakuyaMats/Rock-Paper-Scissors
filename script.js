@@ -32,6 +32,19 @@ function randomChoice(){
     return computerChoice;
 };
 
+function promptConvert() {
+    if (playerChoice === "rock" || playerChoice === "r" || playerChoice === "R") {
+        playerChoice = "Rock";
+        return playerChoice;
+    } else if (playerChoice === "paper" || playerChoice === "p" || playerChoice === "P") {
+        playerChoice = "Paper";
+        return playerChoice;
+    } else if (playerChoice === "scissors" || playerChoice === "s" || playerChoice === "S") {
+        playerChoice = "Scissors";
+        return playerChoice;
+    }
+};
+
 function playerPrompt() {
    return prompt("Please Choose Rock, Paper, Or Scissors");
 }
